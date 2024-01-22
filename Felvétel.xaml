@@ -65,7 +65,24 @@
             <Setter Property="FontFamily" Value="Arial" />
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
-        
+
+        <Style x:Key="ModernDatePickerStyle" TargetType="DatePicker">
+            <Setter Property="Margin" Value="0,5" />
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="#007ACC" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="Width" Value="350" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Style.Resources>
+                <Style TargetType="DatePickerTextBox">
+                    <Setter Property="Background" Value="Transparent"/>
+                    
+                </Style>
+            </Style.Resources>
+        </Style>
 
     </Window.Resources>
     <Grid Background="#282C34">
@@ -112,7 +129,8 @@
 
             <StackPanel Grid.Column="1" Margin="0,0,0,10" Grid.Row="1">
                 <TextBlock Text="Születési idő:" Style="{StaticResource ModernTextBlockStyle}"/>
-                <TextBox x:Name="txtSzuletesiIdo" Style="{StaticResource ModernTextBoxStyle}" Text="2008.10.01"  GotFocus="txtRemoveWaterMark"/>
+                <DatePicker x:Name="dpSzuletesiIdo" Style="{StaticResource ModernDatePickerStyle}" SelectedDate="2008-10-01" Background="#3E4451"/>
+   
             </StackPanel>
 
             <StackPanel Grid.Column="1" Margin="0,0,0,10" Grid.Row="2">

@@ -20,25 +20,15 @@ namespace FELVETELI
     /// </summary>
     public partial class Felvétel : Window
     {
-
+        Diak felvetelioAdatai;
         public Felvétel()
 
         {
             InitializeComponent();
-   
+  
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+  
         private void btnVissza_Click(object sender, RoutedEventArgs e)
         {
 
@@ -47,28 +37,15 @@ namespace FELVETELI
 
         private void btnFelvesz_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-       
 
-                Diak diak = new Diak 
-                {
-                    OM_Azonosito = txtAzonosito.Text,
-                    Neve = txtNev.Text,
-                    ErtesitesiCime = txtCim.Text,
-                    Email = txtEmail.Text,
-                    SzuletesiDatum = DateTime.Parse(txtSzuletesiIdo.Text),
-                    Matematika = int.Parse(txtMatekPontok.Text),
-                    Magyar = int.Parse(txtMagyarPontok.Text)
-                };
-
-                
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Hiba történt a diák hozzáadása során: {ex.Message}", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            felvetelioAdatai.OM_Azonosito = txtAzonosito.Text;
+            felvetelioAdatai.Neve = txtNev.Text;
+            felvetelioAdatai.ErtesitesiCime = txtCim.Text;
+            felvetelioAdatai.Email = txtEmail.Text;
+            felvetelioAdatai.SzuletesiDatum = DateTime.Parse(dpSzuletesiIdo.Text);
+            felvetelioAdatai.Matematika = int.Parse(txtMatekPontok.Text);
+            felvetelioAdatai.Magyar = int.Parse(txtMagyarPontok.Text);
+               
         }
 
     
@@ -76,6 +53,7 @@ namespace FELVETELI
         {
             if (sender is TextBox box)
             {
+
                 if (box.Text == "Gipsz Jakab" || box.Text == "example@gmail.com" || box.Text == "Debrecen, Széchenyi u. 58." || box.Text == "62519514862" || box.Text == "2008.10.01" || box.Text == "50")
                 {
                     box.Text = null;

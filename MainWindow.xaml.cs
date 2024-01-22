@@ -22,12 +22,12 @@ namespace FELVETELI
     /// </summary>
     public partial class MainWindow : Window
     {
-          ObservableCollection<Diak> Diakok { get; set; }
+          ObservableCollection<IFelvetelizo> diakok = new ObservableCollection<IFelvetelizo> ();
         public MainWindow()
         {
             InitializeComponent();
-            Diakok = new ObservableCollection<Diak>();
-            MainGrid.ItemsSource = Diakok;
+            MainGrid.ItemsSource = diakok;
+          
 
         }
         private static readonly Regex _regex = new Regex("[^0-9.-]+");
@@ -49,6 +49,7 @@ namespace FELVETELI
             windowA.Close();
             var windowB = new Felvétel();
             windowB.ShowDialog();
+
         }
 
         private void btnTorol_Click(object sender, RoutedEventArgs e)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace FELVETELI
 {
@@ -15,6 +16,45 @@ namespace FELVETELI
         private DateTime szuletesiDatum;
         private int matematika;
         private int magyar;
+
+        public Diak(String csvString) {
+            string[] adatok = csvString.Split(';');
+
+                if (adatok.Length != 7)
+                {
+                    throw new ArgumentException("Érvénytelen CSV formátum. A CSV sort 7 adatnak kell tartalmaznia.");
+                }
+
+                try
+                {
+                    omAzonosito = adatok[0];
+                    neve = adatok[1];
+                    ertesitesiCime = adatok[2];
+                    email = adatok[3];
+                    szuletesiDatum = DateTime.Parse(adatok[4]);
+                    matematika = int.Parse(adatok[5]);
+                    magyar = int.Parse(adatok[6]);
+                }
+                catch (FormatException)
+                {
+                    throw new ArgumentException("Érvénytelen adatformátum a CSV sorban.");
+                }
+        }
+        public Diak()
+        {
+
+        }
+
+        public Diak(string omAzonosito, string neve, string ertesitesiCime, string email, DateTime szuletesiDatum, int matematika, int magyar)
+        {
+            this.omAzonosito = omAzonosito;
+            this.neve = neve;
+            this.ertesitesiCime = ertesitesiCime;
+            this.email = email;
+            this.szuletesiDatum = szuletesiDatum;
+            this.matematika = matematika;
+            this.magyar = magyar;
+        }
 
         public string OM_Azonosito
         {
@@ -52,7 +92,7 @@ namespace FELVETELI
             }
         }
 
-        public string Email { get => throw new NotImplementedException(); set
+        public string Email { get => email; set
             {
                 if (!string.IsNullOrWhiteSpace(value))
                 {
@@ -68,12 +108,12 @@ namespace FELVETELI
                 }
             }
         }
-        public DateTime SzuletesiDatum
+        public DateTime SzuletesiDatum 
         {
             get => szuletesiDatum;
             set
             {
-                if (value >= new DateTime(2000, 1, 1) && value <= DateTime.Now)
+                if (value >= new DateTime(1980, 1, 1) && value <= DateTime.Now)
                     szuletesiDatum = value;
                 else
                     throw new ArgumentException("Érvénytelen születési dátum.");
@@ -111,27 +151,8 @@ namespace FELVETELI
 
         public void ModositCSVSorral(string csvString)
         {
-            string[] adatok = csvString.Split(';');
-
-            if (adatok.Length != 7)
-            {
-                throw new ArgumentException("Érvénytelen CSV formátum. A CSV sort 7 adatnak kell tartalmaznia.");
-            }
-
-            try
-            {
-                OM_Azonosito = adatok[0];
-                Neve = adatok[1];
-                ErtesitesiCime = adatok[2];
-                Email = adatok[3];
-                SzuletesiDatum = DateTime.Parse(adatok[4]);
-                Matematika = int.Parse(adatok[5]);
-                Magyar = int.Parse(adatok[6]);
-            }
-            catch (FormatException)
-            {
-                throw new ArgumentException("Érvénytelen adatformátum a CSV sorban.");
-            }
+         
+          
         }
     }
 }

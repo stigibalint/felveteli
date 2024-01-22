@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:FELVETELI"
         mc:Ignorable="d"
         ResizeMode="NoResize"
+    
         Title="MiniKifir" Height="450" Width="800">
     <Window.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
@@ -22,11 +23,11 @@
             <Setter Property="Cursor" Value="Hand" />
         </Style>
       
-        <Style x:Key="DataGridStyle" TargetType="DataGrid">
+        <Style x:Key="DataGridStyle" TargetType="DataGrid" >
             <Setter Property="Background" Value="#3E4451"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="#2C313A"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="ColumnHeaderHeight" Value="30"/>
             <Setter Property="RowHeight" Value="25"/>
           
@@ -37,9 +38,11 @@
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="Background" Value="#007ACC"/>
                         <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="BorderBrush" Value="#2C313A"/>
+                        <Setter Property="BorderThickness" Value="1"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="MinWidth" Value="108"/>
+                        <Setter Property="MinWidth" Value="109"/>
         
                     </Style>
                 </Setter.Value>
@@ -58,7 +61,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid  Style="{StaticResource DataGridStyle}" x:Name="MainGrid" Grid.Row="0" Grid.ColumnSpan="4" Background="#3E4451" BorderBrush="#2C313A" BorderThickness="1" Foreground="White" Margin="10" SelectionChanged="DataGrid_SelectionChanged">
+        <DataGrid   IsReadOnly="True" Style="{StaticResource DataGridStyle}" x:Name="MainGrid" Grid.Row="0" Grid.ColumnSpan="4" Background="#3E4451" BorderBrush="#2C313A" BorderThickness="1" Foreground="White" Margin="10" SelectionChanged="DataGrid_SelectionChanged">
     
         </DataGrid>
 
