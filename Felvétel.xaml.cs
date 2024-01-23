@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,35 +19,48 @@ namespace FELVETELI
     /// </summary>
     public partial class Felvétel : Window
     {
-        Diak felvetelioAdatai;
+        Diak felvetelizoAdatai;
         public Felvétel()
-
         {
             InitializeComponent();
-  
+        }
+        public Felvétel(Diak ujdiak) : this()
+        {
+            this.felvetelizoAdatai = ujdiak;
         }
 
-  
+
+
         private void btnVissza_Click(object sender, RoutedEventArgs e)
         {
-
-            this.Close();   
+            this.Close();
         }
 
         private void btnFelvesz_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                felvetelizoAdatai.OM_Azonosito = txtAzonosito.Text;
+                felvetelizoAdatai.Neve = txtNev.Text;
+                felvetelizoAdatai.ErtesitesiCime = txtCim.Text;
+                felvetelizoAdatai.Email = txtEmail.Text;
+                felvetelizoAdatai.SzuletesiDatum = Convert.ToDateTime(dpSzuletesiIdo.Text);
+                felvetelizoAdatai.Matematika = int.Parse(txtMatekPontok.Text);
+                felvetelizoAdatai.Magyar = int.Parse(txtMagyarPontok.Text);
+                MessageBox.Show("Sikeres Felvétel");
+                this.Close() ;
 
-            felvetelioAdatai.OM_Azonosito = txtAzonosito.Text;
-            felvetelioAdatai.Neve = txtNev.Text;
-            felvetelioAdatai.ErtesitesiCime = txtCim.Text;
-            felvetelioAdatai.Email = txtEmail.Text;
-            felvetelioAdatai.SzuletesiDatum = DateTime.Parse(dpSzuletesiIdo.Text);
-            felvetelioAdatai.Matematika = int.Parse(txtMatekPontok.Text);
-            felvetelioAdatai.Magyar = int.Parse(txtMagyarPontok.Text);
-               
+       
+
+            }
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.Message);
+
+            }
+
         }
-
-    
         private void txtRemoveWaterMark(object sender, RoutedEventArgs e)
         {
             if (sender is TextBox box)
@@ -58,7 +70,7 @@ namespace FELVETELI
                 {
                     box.Text = null;
                 }
-             
+
             }
         }
     }

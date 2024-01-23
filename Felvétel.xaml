@@ -5,11 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FELVETELI"
         mc:Ignorable="d"
-        ResizeMode="NoResize"
-        Title="MiniKifir" Height="400" Width="1000">
+        Title="Felvétel" Height="400" Width="1000">
 
     <Window.Resources>
- <Style x:Key="ModernTextBoxStyle" TargetType="TextBox">
+        <Style x:Key="ModernTextBoxStyle" TargetType="TextBox">
             <Setter Property="Margin" Value="0,5" />
             <Setter Property="Padding" Value="10,5" />
             <Setter Property="BorderThickness" Value="1" />
@@ -20,6 +19,7 @@
             <Setter Property="Height" Value="35" />
             <Setter Property="Width" Value="350" />
             <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
 
 
         </Style>
@@ -52,7 +52,7 @@
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="BorderBrush" Value="#3E4451" />
             <Setter Property="BorderThickness" Value="3" />
-      
+
         </Style>
 
         <Style x:Key="ModernTextBlockStyle" TargetType="TextBlock">
@@ -79,7 +79,7 @@
             <Style.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="Background" Value="Transparent"/>
-                    
+
                 </Style>
             </Style.Resources>
         </Style>
@@ -107,7 +107,7 @@
 
             <StackPanel Grid.Column="0" Margin="0,0,10,10">
                 <TextBlock Text="Név:" Style="{StaticResource ModernTextBlockStyle}"/>
-                <TextBox x:Name="txtNev" Style="{StaticResource ModernTextBoxStyle}" Text="Gipsz Jakab"  GotFocus="txtRemoveWaterMark"/>
+                <TextBox x:Name="txtNev" Style="{StaticResource ModernTextBoxStyle}" Text="Gipsz Jakab" GotFocus="txtRemoveWaterMark"/>
             </StackPanel>
 
             <StackPanel Grid.Column="0" Grid.Row="1" Margin="0,0,10,10">
@@ -130,7 +130,7 @@
             <StackPanel Grid.Column="1" Margin="0,0,0,10" Grid.Row="1">
                 <TextBlock Text="Születési idő:" Style="{StaticResource ModernTextBlockStyle}"/>
                 <DatePicker x:Name="dpSzuletesiIdo" Style="{StaticResource ModernDatePickerStyle}" SelectedDate="2008-10-01" Background="#3E4451"/>
-   
+
             </StackPanel>
 
             <StackPanel Grid.Column="1" Margin="0,0,0,10" Grid.Row="2">
@@ -144,15 +144,15 @@
             </StackPanel>
 
 
-          
 
-           
 
-          
-    
+
+
+
+
 
             <Button Grid.Column="1"  x:Name="btnFelvesz" Content="FELVÉTEL" Style="{StaticResource ModernButtonStyle}" Click="btnFelvesz_Click" />
-         
+
             <Button Grid.Column="1" x:Name="btnVissza" Grid.Row="2" Style="{StaticResource ModernButtonStyle}" Content="VISSZA" Click="btnVissza_Click"/>
 
 

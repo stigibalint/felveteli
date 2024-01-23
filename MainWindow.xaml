@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
     
-        Title="MiniKifir" Height="450" Width="800">
+        Title="MiniKifir" Height="500" Width="900">
     <Window.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="DodgerBlue" />
@@ -22,17 +22,20 @@
             <Setter Property="Margin" Value="10" />
             <Setter Property="Cursor" Value="Hand" />
         </Style>
-      
-        <Style x:Key="DataGridStyle" TargetType="DataGrid" >
+
+        <Style x:Key="DataGridStyle" TargetType="DataGrid">
             <Setter Property="Background" Value="#3E4451"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="DarkBlue"/>
             <Setter Property="BorderBrush" Value="#2C313A"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="ColumnHeaderHeight" Value="30"/>
             <Setter Property="RowHeight" Value="25"/>
-          
+            <Setter Property="AutoGenerateColumns" Value="True"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
 
-            <!-- A DataGridColumnHeader stílus beállításai -->
+
+
             <Setter Property="ColumnHeaderStyle">
                 <Setter.Value>
                     <Style TargetType="DataGridColumnHeader">
@@ -42,10 +45,11 @@
                         <Setter Property="BorderThickness" Value="1"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="MinWidth" Value="109"/>
-        
+                        <Setter Property="MinWidth" Value="125"/>
+                  
                     </Style>
                 </Setter.Value>
+            
             </Setter>
         </Style>
     </Window.Resources>
@@ -61,16 +65,16 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid   IsReadOnly="True" Style="{StaticResource DataGridStyle}" x:Name="MainGrid" Grid.Row="0" Grid.ColumnSpan="4" Background="#3E4451" BorderBrush="#2C313A" BorderThickness="1" Foreground="White" Margin="10" SelectionChanged="DataGrid_SelectionChanged">
-    
+        <DataGrid  x:Name="dtgFelveteli"  IsReadOnly="True"  Style="{StaticResource DataGridStyle}"  Grid.Row="0" Grid.ColumnSpan="4" Margin="10" >
+
         </DataGrid>
 
         <Button x:Name="btnFelvetel" Content="DIÁK HOZZÁADÁSA" Grid.Row="1"  Click="btnFelvetel_Click"  Style="{StaticResource ButtonStyle}">
-       
-           
+
+
         </Button>
         <Button x:Name="btnTorol" Content="TÖRLÉS" Grid.Row="1" Grid.Column="1" Style="{StaticResource ButtonStyle}" Click="btnTorol_Click"></Button>
-        <Button x:Name="btnExport" Content="EXPORTÁLÁS" Grid.Row="1" Grid.Column="2" Style="{StaticResource ButtonStyle}"></Button>
-        <Button x:Name="btnImport" Content="IMPORTÁLÁS" Grid.Row="1" Grid.Column="3" Style="{StaticResource ButtonStyle}"></Button>
+        <Button x:Name="btnExport" Content="EXPORTÁLÁS" Grid.Row="1" Grid.Column="2" Style="{StaticResource ButtonStyle}" Click="btnExport_Click"></Button>
+        <Button x:Name="btnImport" Content="IMPORTÁLÁS" Grid.Row="1" Grid.Column="3" Style="{StaticResource ButtonStyle}" Click="btnImport_Click"></Button>
     </Grid>
 </Window>
