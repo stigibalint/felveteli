@@ -74,9 +74,7 @@ namespace FELVETELI
         private void btnModosit_Click(object sender, RoutedEventArgs e)
         {
             try
-            {
-                txtAzonosito.IsReadOnly = true;
-                txtAzonosito.IsEnabled = false;
+            {   
                 felvetelizoAdatai.Neve = txtNev.Text;
                 felvetelizoAdatai.ErtesitesiCime = txtCim.Text;
                 felvetelizoAdatai.Email = txtEmail.Text;
@@ -119,7 +117,7 @@ namespace FELVETELI
                 errorMessages.AppendLine("OM Azonosító: " + error.Message);
             }
            
-            if (error is ArgumentException && error.Message.Contains("SzuletesiDatum"))
+            if (error is ArgumentException && error.Message.Contains("SzuletesiDatum")) 
             {
                 dpSzuletesiIdo.BorderBrush = Brushes.Red;
                 errorMessages.AppendLine("Születési Dátum: " + error.Message);

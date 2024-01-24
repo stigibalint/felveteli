@@ -43,7 +43,9 @@ namespace FELVETELI
 
             Diak ujdiak = new Diak();
             Felvétel ujablak = new Felvétel(ujdiak);
+            ujablak.txtAzonosito.IsEnabled = true;
             ujablak.Title = "Adatok felvétele";
+            ujablak.tbCim.Text = "Diák felvétele";
             ujablak.btnModosit.Visibility = Visibility.Hidden;
             ujablak.btnFelvesz.Visibility = Visibility.Visible;
             ujablak.ShowDialog();
@@ -57,19 +59,33 @@ namespace FELVETELI
         {
             IEditableCollectionView items = dtgFelveteli.Items;
             List<Diak> Torolni = new List<Diak>();
-            foreach (var item in dtgFelveteli.SelectedItems)
-            {
-                Torolni.Add((Diak)item);
-            }
+            if (dtgFelveteli.SelectedItems.Count > 0)
 
-            foreach (Diak item in Torolni)
             {
-                if (items.CanRemove)
+                if (MessageBox.Show("Biztosan eltávolítod a listából?", "Megerősítés", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    items.Remove(dtgFelveteli.SelectedItem);
+                    foreach (var item in dtgFelveteli.SelectedItems)
+                    {
+                        Torolni.Add((Diak)item);
+                    }
+
+                    foreach (Diak item in Torolni)
+                    {
+                        if (items.CanRemove)
+                        {
+                            items.Remove(dtgFelveteli.SelectedItem);
+                        }
+                    }
+                    dtgFelveteli.ItemsSource = felveteli;
+
                 }
+               
             }
-            dtgFelveteli.ItemsSource = felveteli;
+            else
+            {
+                MessageBox.Show("Nincs kiválasztott elem");
+            }
+          
 
         }
 
@@ -133,7 +149,9 @@ namespace FELVETELI
                 {
                     Diak kivalasztottDiak = (Diak)dtgFelveteli.SelectedItem;
                     Felvétel ujablak = new Felvétel(kivalasztottDiak, true);
+                    ujablak.txtAzonosito.IsEnabled = false;
                     ujablak.Title = "Adatok módosítása";
+                    ujablak.tbCim.Text = "Diák modosítása";
                     ujablak.btnModosit.Visibility = Visibility.Visible;
                     ujablak.btnFelvesz.Visibility = Visibility.Hidden;
                     ujablak.ShowDialog();

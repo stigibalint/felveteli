@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:FELVETELI"
         mc:Ignorable="d"
         ResizeMode="NoResize"
+        Icon="Images/titleicon.ico"
         Title="Felvétel" Height="400" Width="1000">
 
     <Window.Resources>
@@ -88,7 +89,7 @@
     <Grid Background="#282C34">
 
         <Border Background="#007ACC" VerticalAlignment="Top" Height="50">
-            <TextBlock Text="Diákok felvétele" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18"/>
+            <TextBlock x:Name="tbCim" Text="Diák felvétele" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18"/>
         </Border>
 
 
