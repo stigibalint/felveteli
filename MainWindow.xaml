@@ -8,7 +8,7 @@
         Icon="Images/titleicon.ico"
         ResizeMode="NoResize"
     
-        Title="MiniKifir" Height="500" Width="900">
+        Title="MiniKifir" Height="500" Width="950">
     <Window.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="DodgerBlue" />
@@ -31,11 +31,10 @@
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="ColumnHeaderHeight" Value="30"/>
             <Setter Property="RowHeight" Value="25"/>
-            <Setter Property="AutoGenerateColumns" Value="True"/>
+      
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
-
-
+            <Setter Property="ColumnWidth" Value="130"/>
 
             <Setter Property="ColumnHeaderStyle">
                 <Setter.Value>
@@ -46,12 +45,14 @@
                         <Setter Property="BorderThickness" Value="1"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="MinWidth" Value="125"/>
+                       
                   
                     </Style>
                 </Setter.Value>
             
             </Setter>
+        
+
         </Style>
     </Window.Resources>
   
