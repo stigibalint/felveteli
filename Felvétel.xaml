@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FELVETELI"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="Felvétel" Height="400" Width="1000">
 
     <Window.Resources>

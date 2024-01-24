@@ -44,8 +44,6 @@ namespace FELVETELI
         }
      
 
-
-
         private void btnVissza_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -92,8 +90,9 @@ namespace FELVETELI
             }
             catch (Exception error)
             {
-
+            
                 MessageBox.Show($"{error.Message}");
+                
 
             }
           

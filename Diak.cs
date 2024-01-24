@@ -70,10 +70,16 @@ namespace FELVETELI
             {
                 if (!string.IsNullOrWhiteSpace(value) && !value.Any(char.IsDigit))
                 {
-                    if (value.Contains(" ") && value.Split(" ").Length >= 2)
+                    string[] words = value.Split(" ");
+
+                    if (words.Length >= 2 && words.All(word => char.IsUpper(word[0])))
+                    {
                         neve = value;
+                    }
                     else
-                        throw new ArgumentException("A névnek legalább két szót kell tartalmaznia.");
+                    {
+                        throw new ArgumentException("A névnek legalább két szónak, és minden szónak nagybetűvel kell kezdődnie.");
+                    }
                 }
                 else
                 {
@@ -83,15 +89,19 @@ namespace FELVETELI
         }
         public string Email
         {
-            get => email; set
+            get => email;
+            set
             {
                 if (!string.IsNullOrWhiteSpace(value))
                 {
-
-                    if (value.Contains("@") && value.Contains("."))
+                    if (value.Count(c => c == '@') == 1 && !value.Contains(" ") && value.Contains("."))
+                    {
                         email = value;
+                    }
                     else
+                    {
                         throw new ArgumentException("Érvénytelen e-mail cím formátum.");
+                    }
                 }
                 else
                 {
@@ -117,7 +127,7 @@ namespace FELVETELI
                 get => szuletesiDatum;
                 set
                 {
-                    if (value >= new DateTime(2000, 1, 1) && value <= new DateTime(2010,1,1))
+                    if (value >= new DateTime(2000, 1, 1) && value <= new DateTime(2013,1,1))
                         szuletesiDatum = value;
                     else
                         throw new ArgumentException("Érvénytelen születési dátum.");
