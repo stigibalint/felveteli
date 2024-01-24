@@ -19,6 +19,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using Microsoft.Win32;
+using System.Text.Json;
+using System.Text.Encodings.Web;
+
 namespace FELVETELI
 {
     /// <summary>
@@ -35,18 +38,14 @@ namespace FELVETELI
 
         }
 
-
-
-
- 
-
-
-
-        private void btnFelvetel_Click(object sender, RoutedEventArgs e) 
+        private void btnFelvetel_Click(object sender, RoutedEventArgs e)
         {
 
             Diak ujdiak = new Diak();
             Felvétel ujablak = new Felvétel(ujdiak);
+            ujablak.Title = "Adatok felvétele";
+            ujablak.btnModosit.Visibility = Visibility.Hidden;
+            ujablak.btnFelvesz.Visibility = Visibility.Visible;
             ujablak.ShowDialog();
             if (ujdiak.Neve != null)
             {
@@ -56,15 +55,12 @@ namespace FELVETELI
 
         private void btnTorol_Click(object sender, RoutedEventArgs e)
         {
-
-          
-
-            IEditableCollectionView items = dtgFelveteli.Items; 
+            IEditableCollectionView items = dtgFelveteli.Items;
             List<Diak> Torolni = new List<Diak>();
-            foreach (var item in dtgFelveteli.SelectedItems) 
-                {
+            foreach (var item in dtgFelveteli.SelectedItems)
+            {
                 Torolni.Add((Diak)item);
-                }
+            }
 
             foreach (Diak item in Torolni)
             {
@@ -75,9 +71,6 @@ namespace FELVETELI
             }
             dtgFelveteli.ItemsSource = felveteli;
 
-
-            
-            
         }
 
         private void btnImport_Click(object sender, RoutedEventArgs e)
@@ -89,7 +82,7 @@ namespace FELVETELI
                     felveteli.Clear();
 
                 }
-              
+
             }
 
             OpenFileDialog ofd = new OpenFileDialog();
@@ -103,18 +96,58 @@ namespace FELVETELI
             }
 
         }
-
-
-
-
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
-            StreamWriter sw = new StreamWriter("DiakUj.csv",false);
-            foreach (Diak item in dtgFelveteli.Items)
+
+            //var opciok = new JsonSerializerOptions();
+            //opciok.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+            //opciok.WriteIndented = true;
+            //string adatokSorai = JsonSerializer.Serialize(felveteli, opciok);
+            //var lista = new List<String>();
+            //lista.Add(adatokSorai);
+
+            try
             {
-                sw.WriteLine(item.CSVSortAdVissza());
+
+                StreamWriter sw = new StreamWriter("DiakUj.csv", false);
+                foreach (Diak item in dtgFelveteli.Items)
+                {
+                    sw.WriteLine(item.CSVSortAdVissza());
+                }
+                sw.Close();
+                MessageBox.Show("Sikeres exportálás");
             }
-            sw.Close();
+            catch (Exception error)
+            {
+
+                MessageBox.Show(error.Message);
+            }
+
+        }
+
+        private void btnModosit_Click(object sender, RoutedEventArgs e)
+        {
+            if (dtgFelveteli.SelectedItems.Count < 2)
+            {        
+                if (dtgFelveteli.SelectedItem != null)
+                {
+                    Diak kivalasztottDiak = (Diak)dtgFelveteli.SelectedItem;
+                    Felvétel ujablak = new Felvétel(kivalasztottDiak, true);
+                    ujablak.Title = "Adatok módosítása";
+                    ujablak.btnModosit.Visibility = Visibility.Visible;
+                    ujablak.btnFelvesz.Visibility = Visibility.Hidden;
+                    ujablak.ShowDialog();
+                    dtgFelveteli.Items.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("Nincs kiválasztott elem a listában!");
+                }  
+            }
+            else
+            {
+                MessageBox.Show("Túl sok a kiválasztott elem a listában!");
+            }
         }
     }
 }
