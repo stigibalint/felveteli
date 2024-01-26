@@ -51,18 +51,7 @@ namespace FELVETELI
                 this.magyar = magyar;
             }
 
-            public string OM_Azonosito
-            {
-                get => omAzonosito;
-                set
-                {
-                    if (value.All(char.IsDigit) && value.Length == 11 )
-                        omAzonosito = value;
-                    else
-                        throw new ArgumentException("Az OM azonosítónak 11 számjegyből kell állnia.",nameof(OM_Azonosito));
-                }
-            }
-
+    
         public string Neve
         {
             get => neve;
@@ -126,9 +115,20 @@ namespace FELVETELI
                         throw new ArgumentException("Az értesítési cím nem lehet üres.",nameof(ErtesitesiCime));
                 }
             }
+        public string OM_Azonosito
+        {
+            get => omAzonosito;
+            set
+            {
+                if (value.All(char.IsDigit) && value.Length == 11)
+                    omAzonosito = value;
+                else
+                    throw new ArgumentException("Az OM azonosítónak 11 számjegyből kell állnia.", nameof(OM_Azonosito));
+            }
+        }
 
-  
-            public DateTime SzuletesiDatum
+
+        public DateTime SzuletesiDatum
             {
                 get => szuletesiDatum;
                 set
@@ -145,7 +145,7 @@ namespace FELVETELI
             get => magyar;
             set
             {
-                if (value >= 0 && value <= 50 && !string.IsNullOrWhiteSpace(Convert.ToString(value)))
+                if (value >= -1 && value <= 50 && !string.IsNullOrWhiteSpace(Convert.ToString(value)))
                     magyar = value;
                 else
                     throw new ArgumentException("A pontszámnak 0 és 50 között kell lennie.", nameof(Magyar));
@@ -156,7 +156,7 @@ namespace FELVETELI
                 get => matematika;
                 set
                 {
-                    if (value >= 0 && value <= 50 && !string.IsNullOrWhiteSpace(Convert.ToString(value)))
+                    if (value >= -1 && value <= 50 && !string.IsNullOrWhiteSpace(Convert.ToString(value)))
                         matematika = value;
                     else
                     throw new ArgumentException("A pontszámnak 0 és 50 között kell lennie.", nameof(Matematika));
@@ -166,7 +166,7 @@ namespace FELVETELI
 
             public string CSVSortAdVissza()
             {
-                return $"{OM_Azonosito},{Neve},{ErtesitesiCime},{Email},{SzuletesiDatum},{Matematika},{Magyar}";
+                return $"{OM_Azonosito};{Neve};{ErtesitesiCime};{Email};{SzuletesiDatum};{Matematika};{Magyar}";
             }
 
             public void ModositCSVSorral(String csvString)
