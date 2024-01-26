@@ -5,36 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FELVETELI"
         mc:Ignorable="d"
-        Icon="Images/titleicon.ico"
         ResizeMode="NoResize"
-    
+        Icon="Images/title.ico"
         Title="MiniKifir" Height="500" Width="950">
     <Window.Resources>
+        <LinearGradientBrush x:Key="buttonStyleGradient"  EndPoint="0.3,1" StartPoint="0.2,0">
+            <GradientStop Color="DodgerBlue" Offset="0" />
+            <GradientStop Color="#00308F" Offset="1" />
+        </LinearGradientBrush>
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="DodgerBlue" />
+            <Setter Property="Background" Value="{StaticResource buttonStyleGradient}" />
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="13" />
-            <Setter Property="Width" Value="130" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Width" Value="140" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="Height" Value="40" />
+            <Setter Property="Height" Value="45" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="Cursor" Value="Hand" />
+            
         </Style>
-
+       
         <Style x:Key="DataGridStyle" TargetType="DataGrid">
             <Setter Property="Background" Value="#3E4451"/>
             <Setter Property="Foreground" Value="DarkBlue"/>
+            <Setter Property="FontSize" Value="13"/>
             <Setter Property="BorderBrush" Value="#2C313A"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="ColumnHeaderHeight" Value="30"/>
             <Setter Property="RowHeight" Value="25"/>
+            <Setter Property="AutoGenerateColumns" Value="True"/>
       
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="ColumnWidth" Value="130"/>
+            <Setter Property="MinColumnWidth" Value="130"/>
 
             <Setter Property="ColumnHeaderStyle">
                 <Setter.Value>
@@ -72,7 +78,7 @@
         <DataGrid  x:Name="dtgFelveteli"  IsReadOnly="True"  Style="{StaticResource DataGridStyle}"  Grid.Row="0" Grid.ColumnSpan="5" Margin="10" >
 
         </DataGrid>
-
+    
         <Button x:Name="btnFelvetel" Content="DIÁK HOZZÁADÁSA" Grid.Row="1"  Click="btnFelvetel_Click"  Style="{StaticResource ButtonStyle}"></Button>
         <Button x:Name="btnModosit" Content="MÓDOSÍTÁS" Grid.Row="1" Grid.Column="1"  Style="{StaticResource ButtonStyle}" Click="btnModosit_Click"></Button>
         <Button x:Name="btnTorol" Content="TÖRLÉS" Grid.Row="1" Grid.Column="2" Style="{StaticResource ButtonStyle}" Click="btnTorol_Click"></Button>

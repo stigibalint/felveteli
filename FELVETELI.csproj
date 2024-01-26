@@ -8,11 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\title.ico" />
     <None Remove="Images\titleicon.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\titleicon.ico">
+    <Content Include="Images\title.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

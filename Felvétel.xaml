@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FELVETELI"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Icon="Images/titleicon.ico"
+        Icon="Images/title.ico"
         Title="Felvétel" Height="400" Width="1000">
 
     <Window.Resources>
@@ -43,9 +43,9 @@
 
             <Setter Property="Background" Value="#007ACC" />
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="Height" Value="100" />
-            <Setter Property="Width" Value="100" />
+            <Setter Property="FontSize" Value="21" />
+            <Setter Property="Height" Value="110" />
+            <Setter Property="Width" Value="140" />
             <Setter Property="HorizontalAlignment" Value="Right" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="FontFamily" Value="Arial" />
@@ -82,6 +82,10 @@
 
                 </Style>
             </Style.Resources>
+            
+        </Style>
+        <Style x:Key="ModernBackground" TargetType="Grid">
+            
         </Style>
 
     </Window.Resources>
@@ -97,6 +101,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="150" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -139,7 +144,7 @@
                 <TextBox x:Name="txtMagyarPontok" Style="{StaticResource PontokTextBoxStyle}" Text="50"  GotFocus="txtRemoveWaterMark"/>
             </StackPanel>
 
-            <StackPanel Grid.Column="1" Margin="0,0,0,10" Grid.Row="2" HorizontalAlignment="Right">
+            <StackPanel Grid.Column="1" Margin="0,0,-85,10" Grid.Row="2" HorizontalAlignment="Right">
                 <TextBlock Text="Matek pontok:" Style="{StaticResource ModernTextBlockStyle}"/>
                 <TextBox x:Name="txtMatekPontok" Style="{StaticResource PontokTextBoxStyle}" Text="50" GotFocus="txtRemoveWaterMark" />
             </StackPanel>
@@ -149,14 +154,11 @@
 
 
 
-
-
-            <Button Grid.Column="1"  x:Name="btnModosit" Content="MÓDOSÍT" Style="{StaticResource ModernButtonStyle}"  Click="btnModosit_Click"/>
-            <Button Grid.Column="1"  x:Name="btnFelvesz" Content="FELVÉTEL" Style="{StaticResource ModernButtonStyle}" Click="btnFelvesz_Click"/>
-          
-
-            <Button Grid.Column="1" x:Name="btnVissza" Grid.Row="2" Style="{StaticResource ModernButtonStyle}" Content="VISSZA" Click="btnVissza_Click"/>
-
+      
+            <Button Grid.Column="2"  x:Name="btnModosit" Content="MÓDOSÍT" Style="{StaticResource ModernButtonStyle}"  Click="btnModosit_Click"/>
+            <Button Grid.Column="2"  x:Name="btnFelvesz" Content="FELVÉTEL" Style="{StaticResource ModernButtonStyle}" Click="btnFelvesz_Click"/>
+            <Button Grid.Column="2" x:Name="btnVissza" Grid.Row="2" Style="{StaticResource ModernButtonStyle}" Content="VISSZA" Click="btnVissza_Click"/>
+           
 
 
 
